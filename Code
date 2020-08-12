@@ -42,9 +42,9 @@ def guess_the_no():
 
 def play_again():
     user_choice = input('\nWould you like to play again(y/n): \n')
-    if user_choice == 'y' or user_choice == 'Y'.lower():
+    if user_choice == 'y' or user_choice == 'Y':
         guess_the_no()
-    elif user_choice == 'n' or user_choice == 'N'.lower():
+    elif user_choice == 'n' or user_choice == 'N':
         print('\nSee you again!!!\n')
 
 guess_the_no()
