@@ -1,34 +1,50 @@
 from random import randint
 def guess_the_no():
     sys_choice = randint(1, 20)
+    print('\nSystem has generated number (From 1-20) which you have to guess!!!\nYou have 10 attempts to guess it!!\n')
+    chances = 10
+    guesses = 0
 #print(sys_choice)
-    while True:
-        user_choice = input('Enter your no here (from 1-10): \n')
+    while (guesses<=10):
+        user_choice = input('Enter your no here (from 1-20): \n')
+        guesses += 1
 #       print(user_choice)
         try:
             if user_choice == 'cheat':
+                guesses -= 1
                 print(sys_choice)
                 continue
-            if 0 < int(user_choice) < 11:
-                if int(user_choice) == sys_choice:
-                    print('Congratulations! You guessed the right no.')
+            if 0 < int(user_choice) <= 20:
+                if guesses == chances:
+                    print('\nGame Over, You have used all your chances!!!\n')
                     play_again()
                     break
-                else:
-                    print('Try Again!')
+                elif int(user_choice) > sys_choice:
+                    left = chances - guesses
+                    print('\nPlease select lower number, You have {} guesses left \n'.format(left))
                     continue
+                elif int(user_choice) < sys_choice:
+                    left = chances - guesses
+                    print('\nPlease select higher number, You have {} guesses left \n'.format(left))
+                    continue
+                else:
+                    print('\nCongratulations, You guessed it right in {} attempt!!\n'.format(guesses))
+                    play_again()
+                    break
             else:
-                print('Hey, I said select from 1~20')
+                left = chances - guesses
+                print('\nHey, I said select from 1~20, You have {} guesses left\n'.format(left))
 
         except ValueError:
-            print('Please enter no 1~20')
+            left = chances - guesses
+            print('\nPlease enter no 1~20, You have {} guesses left\n'.format(left))
             continue
 
 def play_again():
-    user_choice = input('Would you like to play again(y/n): \n')
+    user_choice = input('\nWould you like to play again(y/n): \n')
     if user_choice == 'y' or user_choice == 'Y'.lower():
         guess_the_no()
     elif user_choice == 'n' or user_choice == 'N'.lower():
-        print('See you again!!!')
+        print('\nSee you again!!!\n')
 
 guess_the_no()
