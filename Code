@@ -1,0 +1,34 @@
+from random import randint
+def guess_the_no():
+    sys_choice = randint(1, 20)
+#print(sys_choice)
+    while True:
+        user_choice = input('Enter your no here (from 1-10): \n')
+#       print(user_choice)
+        try:
+            if user_choice == 'cheat':
+                print(sys_choice)
+                continue
+            if 0 < int(user_choice) < 11:
+                if int(user_choice) == sys_choice:
+                    print('Congratulations! You guessed the right no.')
+                    play_again()
+                    break
+                else:
+                    print('Try Again!')
+                    continue
+            else:
+                print('Hey, I said select from 1~20')
+
+        except ValueError:
+            print('Please enter no 1~20')
+            continue
+
+def play_again():
+    user_choice = input('Would you like to play again(y/n): \n')
+    if user_choice == 'y' or user_choice == 'Y'.lower():
+        guess_the_no()
+    elif user_choice == 'n' or user_choice == 'N'.lower():
+        print('See you again!!!')
+
+guess_the_no()
