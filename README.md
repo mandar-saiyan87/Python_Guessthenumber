@@ -1,6 +1,6 @@
 # GuessthenumberGame
 
-#This simple number guessing game created for fun and as a first coding attempt using python where system will generate random no from (1-20)
+#This simple number guessing game created for fun and as a first coding attempt using python where system will generate random no. from (1-20)
 
 #Player have to guess it in 10 attempts.
 
